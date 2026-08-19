@@ -1,0 +1,28 @@
+cd /home/claude/library-management-system && find . -not -path './.git*' -type f | sort
+Output
+
+./LICENSE
+./README.md
+./data/.gitkeep
+./main.py
+./requirements.txt
+./src/__init__.py
+./src/__pycache__/__init__.cpython-312.pyc
+./src/__pycache__/cli.cpython-312.pyc
+./src/__pycache__/exceptions.cpython-312.pyc
+./src/__pycache__/library.cpython-312.pyc
+./src/__pycache__/models.cpython-312.pyc
+./src/__pycache__/storage.cpython-312.pyc
+./src/cli.py
+./src/exceptions.py
+./src/library.py
+./src/models.py
+./src/storage.py
+./tests/__init__.py
+./tests/__pycache__/test_library.cpython-312.pyc
+./tests/test_library.py
+
+Script to generate the Project Report PDF using reportlab
+
+
+You are out of free messages 
