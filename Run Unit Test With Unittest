@@ -1,0 +1,123 @@
+cd /home/claude/library-management-system && python3 -m unittest discover tests -v 2>&1 | tail -50
+Output
+
+test_add_and_get_book (test_library.LibraryTestCase.test_add_and_get_book) ... ok
+test_add_member (test_library.LibraryTestCase.test_add_member) ... ok
+test_cannot_delete_book_with_outstanding_loan (test_library.LibraryTestCase.test_cannot_delete_book_with_outstanding_loan) ... ok
+test_cannot_issue_same_book_twice_to_same_member (test_library.LibraryTestCase.test_cannot_issue_same_book_twice_to_same_member) ... ok
+test_cannot_issue_unavailable_book (test_library.LibraryTestCase.test_cannot_issue_unavailable_book) ... ok
+test_delete_book (test_library.LibraryTestCase.test_delete_book) ... ok
+test_duplicate_isbn_rejected (test_library.LibraryTestCase.test_duplicate_isbn_rejected) ... ok
+test_duplicate_member_rejected (test_library.LibraryTestCase.test_duplicate_member_rejected) ... ok
+test_get_missing_book_raises (test_library.LibraryTestCase.test_get_missing_book_raises) ... ok
+test_get_missing_member_raises (test_library.LibraryTestCase.test_get_missing_member_raises) ... ok
+test_invalid_book_data_rejected (test_library.LibraryTestCase.test_invalid_book_data_rejected) ... ok
+test_invalid_email_rejected (test_library.LibraryTestCase.test_invalid_email_rejected) ... ok
+test_issue_and_return_book (test_library.LibraryTestCase.test_issue_and_return_book) ... ok
+test_membership_limit_enforced (test_library.LibraryTestCase.test_membership_limit_enforced) ... ok
+test_overdue_fine_calculation (test_library.LibraryTestCase.test_overdue_fine_calculation) ... ok
+test_return_without_active_issue_raises (test_library.LibraryTestCase.test_return_without_active_issue_raises) ... ok
+test_search_books_by_keyword_and_category (test_library.LibraryTestCase.test_search_books_by_keyword_and_category) ... ok
+test_stats (test_library.LibraryTestCase.test_stats) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.023s
+
+OK
+All 18 tests pass. Let's also do a quick manual smoke test of the CLI, then check data/ isn't accidentally left in the repo dir:
+
+
+Smoke test the CLI end-to-end
+bash
+
+cd /home/claude/library-management-system && printf "1\n978-0132350884\nClean Code\nRobert C. Martin\nProgramming\n2\n\n6\nM1\nAsha Rao\nasha@example.com\n9876543210\n3\n\n11\n978-0132350884\nM1\n\n15\n\n0\n" | python3 main.py 2>&1 | tail -60
+Output
+
+  [79dd3b67] ISBN 978-0132350884 -> Member M1 | issued 2026-08-19, due 2026-09-02, OUTSTANDING
+
+Press Enter to continue...
+============================================================
+               LIBRARY MANAGEMENT SYSTEM
+============================================================
+ Book Management
+   1. Add Book            2. Update Book
+   3. Delete Book          4. List All Books
+   5. Search / Filter Books
+
+ Member Management
+   6. Add Member           7. Update Member
+   8. Delete Member        9. List All Members
+  10. Search Members
+
+ Issue / Return
+  11. Issue Book          12. Return Book
+  13. Currently Issued    14. Overdue Books
+
+ Reports
+  15. Library Statistics
+
+   0. Exit
+============================================================
+
+Choose an option: ------------------------------------------------------------ 
+Library Statistics
+  Total titles: 1
+  Total copies: 2
+  Available copies: 1
+  Total members: 1
+  Books currently issued: 1
+  Overdue books: 0
+
+Press Enter to continue...
+============================================================
+               LIBRARY MANAGEMENT SYSTEM
+============================================================
+ Book Management
+   1. Add Book            2. Update Book
+   3. Delete Book          4. List All Books
+   5. Search / Filter Books
+
+ Member Management
+   6. Add Member           7. Update Member
+   8. Delete Member        9. List All Members
+  10. Search Members
+
+ Issue / Return
+  11. Issue Book          12. Return Book
+  13. Currently Issued    14. Overdue Books
+
+ Reports
+  15. Library Statistics
+
+   0. Exit
+============================================================
+
+Choose an option: Goodbye!
+Works end to end and persists data. Now let's clean the test data and add supporting repo files (README, requirements, .gitignore, LICENSE):
+
+
+Clear smoke-test data, verify reportlab available
+
+requirements.txt (project uses only the standard library)
+
+.gitignore for the project
+
+Keep the empty data directory tracked in git
+
+MIT License
+Now the README:
+
+
+Project README with setup, usage, and architecture docs
+Now let's initialize git locally so the person can push straight to GitHub:
+
+
+Initialize local git repo with first commit
+Now let's build the Project Report PDF using reportlab. Let me check the frontend-design / general layout isn't needed for PDF — I'll write a comprehensive report directly.
+
+
+Ran a command, created a file
+Ran a command, created a file
+
+
+You are out of free messages until 11:30 PM
