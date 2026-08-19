@@ -1,0 +1,4 @@
+mkdir -p /home/claude/library-management-system/src /home/claude/library-management-system/data /home/claude/library-management-system/tests && echo ok
+Output
+
+ok
